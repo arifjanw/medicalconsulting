@@ -1,4 +1,3 @@
-//ServicePage.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
@@ -7,12 +6,12 @@ import { faStethoscope, faSmokingBan, faBookMedical } from "@fortawesome/free-so
 
 const ServicePage = () => {
   const [selectedService, setSelectedService] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const services = {
     "Minor Ailments": ["Morning Sickness", "Heartburn", "Allergy"],
-    "Smoking Cessation": [ "Nicotine Replacement Therapy","Behavioral Support","Prescription Method",],
-    "Diabetic Education": ["Blood Sugar Management","Nutrition Counseling", "Lifestyle Management",],
+    "Smoking Cessation": ["Nicotine Replacement Therapy", "Behavioral Support", "Prescription Method"],
+    "Diabetic Education": ["Blood Sugar Management", "Nutrition Counseling", "Lifestyle Management"],
   };
 
   const handleServiceClick = (service) => {
@@ -21,9 +20,7 @@ const ServicePage = () => {
 
   const handleOptionClick = (option) => {
     navigate("/bookingpage", { state: { selectedService, selectedOption: option } });
-
   };
-  
 
   return (
     <div>
@@ -53,6 +50,23 @@ const ServicePage = () => {
             <p className="mt-2 text-gray-700">
               Receive consultation and treatment for minor health concerns.
             </p>
+            {/* Subservices below the service card (Mobile view) */}
+            {selectedService === "Minor Ailments" && (
+              <div className="mt-4">
+                <h4 className="text-xl font-semibold text-gray-800">Options:</h4>
+                <ul className="list-disc list-inside text-gray-700">
+                  {services["Minor Ailments"].map((option, index) => (
+                    <li
+                      key={index}
+                      className="mb-2 cursor-pointer text-blue-500 hover:underline"
+                      onClick={() => handleOptionClick(option)}
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Smoking Cessation Service */}
@@ -69,6 +83,23 @@ const ServicePage = () => {
             <p className="mt-2 text-gray-700">
               Receive support to quit smoking and improve your health.
             </p>
+            {/* Subservices below the service card (Mobile view) */}
+            {selectedService === "Smoking Cessation" && (
+              <div className="mt-4">
+                <h4 className="text-xl font-semibold text-gray-800">Options:</h4>
+                <ul className="list-disc list-inside text-gray-700">
+                  {services["Smoking Cessation"].map((option, index) => (
+                    <li
+                      key={index}
+                      className="mb-2 cursor-pointer text-blue-500 hover:underline"
+                      onClick={() => handleOptionClick(option)}
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Diabetic Education Service */}
@@ -85,28 +116,27 @@ const ServicePage = () => {
             <p className="mt-2 text-gray-700">
               Learn how to manage diabetes with professional guidance.
             </p>
+            {/* Subservices below the service card (Mobile view) */}
+            {selectedService === "Diabetic Education" && (
+              <div className="mt-4">
+                <h4 className="text-xl font-semibold text-gray-800">Options:</h4>
+                <ul className="list-disc list-inside text-gray-700">
+                  {services["Diabetic Education"].map((option, index) => (
+                    <li
+                      key={index}
+                      className="mb-2 cursor-pointer text-blue-500 hover:underline"
+                      onClick={() => handleOptionClick(option)}
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Options Section */}
-        {selectedService && (
-          <div className="mt-8 p-6 bg-gray-100 rounded-lg shadow-md">
-            <h3 className="text-2xl font-semibold mb-4" style={{ color: "#f49e1e" }}>
-              {selectedService} Options:
-            </h3>
-            <ul className="list-disc list-inside text-gray-700">
-              {services[selectedService].map((option, index) => (
-                <li
-                  key={index}
-                  className="mb-2 cursor-pointer text-blue-500 hover:underline"
-                  onClick={() => handleOptionClick(option)}
-                >
-                  {option}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        
       </main>
     </div>
   );
