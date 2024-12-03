@@ -259,7 +259,7 @@ const LandingPage = () => {
             </div>
             <div className="mt-8 flex justify-center">
             <Link
-            to="/services"
+            to="/view-response/:id"
            
           >
               <button className="bg-blue-600 font-bold  text-white py-3 px-8 text-md hover:bg-blue-500 transition duration-300  rounded-full">
