@@ -2,7 +2,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import html2pdf from "html2pdf.js";
-const QuestionnaireViewer = (questions ) => {
+const QuestionnaireViewer = ( ) => {
     const { id } = useParams();  // Get the id from the URL
   console.log('Questionnaire ID from URL:', id);  // Log the id to ensure it's correct
 
