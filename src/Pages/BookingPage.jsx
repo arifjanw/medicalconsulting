@@ -6,23 +6,17 @@ import "react-calendar/dist/Calendar.css";
 import emailjs from "emailjs-com";
 import Header from "../Components/Header";
 import { v4 as uuidv4 } from "uuid"
-// import QuestionnaireViewer from "../Components/QuestionareViewer";
 
 const BookingPage = () => {
-  
   const location = useLocation();
   const {selectedService, selectedOption } = location.state || {}; // Destructure state to get selectedOption
-
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const handleMouseEnter = () => setIsDropdownVisible(true);
   const handleMouseLeave = () => setIsDropdownVisible(false);
-
-
-  const [showTimeSlots, setShowTimeSlots] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
-  
+
 
   const questionnaires = {
     "Morning Sickness": [
@@ -70,7 +64,6 @@ const BookingPage = () => {
     "What time of day do you prefer to be active?",
   ]
   };
-
   const questions = questionnaires[selectedOption] || [];
   if (questions.length === 0) {
     console.error('No questions found for selected option:', selectedOption);
@@ -82,6 +75,8 @@ const BookingPage = () => {
     state: "",
     postalCode: "",
     city: "",
+    selectedService:"",
+    selectedOption:"",
     A1: '',
     A2: '',
     A3: '',
@@ -101,12 +96,10 @@ const BookingPage = () => {
     }
     return slots;
   };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setIsFormVisible(true);
   };
-
   const handleBooking = (e) => {
     e.preventDefault();
     const bookingData = {
@@ -154,7 +147,6 @@ console.log("Unique ID:", uniqueId);
 console.log("Booking Data:", bookingData);
 localStorage.setItem(uniqueId, JSON.stringify(bookingData));
 
-
     
 //admin
 emailjs
@@ -189,7 +181,6 @@ option: selectedOption,
   }
 );
   };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -197,7 +188,6 @@ option: selectedOption,
       [name]: value,
     }));
   };
-  
   return (
     <div>
       <Header
@@ -259,8 +249,6 @@ option: selectedOption,
 
         </div>
       </main>
-      {/* <QuestionnaireViewer questions={questions} /> */}
-      {/* Popup Form */}
       {isFormVisible && (
   <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
     <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full overflow-y-auto" style={{ maxHeight: '80vh' }}>
@@ -316,30 +304,85 @@ option: selectedOption,
           onChange={handleInputChange}
           required
         />
-
-     
+        
+       
 {questions.map((question, index) => (
   <div key={index} className="mb-4">
-    <label className="block font-semibold mb-2" >{question}</label>
-    <input
-      type="text"
-      name={`A${index + 1}`}
-      className="w-full p-2 border rounded-lg"
-      value={formData[`A${index + 1}`]}
-      onChange={(e) =>
-        setFormData((prevData) => ({
-          ...prevData,
-          [`A${index + 1}`]: e.target.value,
-        }))
-      }
-      required
-    />
-
+    <label className="block font-semibold mb-2">{question}</label>
+    {question === "Do certain smells or foods trigger your symptoms?" ? (
+      <div>
+        {/* Radio Buttons */}
+        <div className="flex space-x-4 mb-2">
+          <label className="flex items-center space-x-2">
+            <input
+              type="radio"
+              name={`A${index + 1}`}
+              value="yes"
+              className="form-radio text-orange-500"
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  [`A${index + 1}`]: e.target.value,
+                  [`triggerInput${index + 1}`]: "", // Reset the text field value
+                }))
+              }
+              checked={formData[`A${index + 1}`] === "yes"}
+            />
+            <span>Yes</span>
+          </label>
+          <label className="flex items-center space-x-2">
+            <input
+              type="radio"
+              name={`A${index + 1}`}
+              value="no"
+              className="form-radio text-orange-500"
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  [`A${index + 1}`]: e.target.value,
+                  [`triggerInput${index + 1}`]: "", // Ensure input is cleared on "No"
+                }))
+              }
+              checked={formData[`A${index + 1}`] === "no"}
+            />
+            <span>No</span>
+          </label>
+        </div>
+        {/* Conditional Input Field */}
+        {formData[`A${index + 1}`] === "yes" && (
+          <input
+            type="text"
+            name={`triggerInput${index + 1}`}
+            className="w-full p-2 border rounded-lg"
+            placeholder="Please describe"
+            value={formData[`triggerInput${index + 1}`] || ""}
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                [`triggerInput${index + 1}`]: e.target.value,
+              }))
+            }
+          />
+        )}
+      </div>
+    ) : (
+      // Default Input Field for Other Questions
+      <input
+        type="text"
+        name={`A${index + 1}`}
+        className="w-full p-2 border rounded-lg"
+        value={formData[`A${index + 1}`]}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            [`A${index + 1}`]: e.target.value,
+          }))
+        }
+        required
+      />
+    )}
   </div>
 ))}
-
-
-
 
         <button
           type="submit"
@@ -357,9 +400,7 @@ option: selectedOption,
     </div>
   </div>
 )}
-
     </div>
   );
 };
-
 export default BookingPage;

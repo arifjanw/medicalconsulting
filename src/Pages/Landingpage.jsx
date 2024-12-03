@@ -47,9 +47,13 @@ const LandingPage = () => {
                 <p className="text-lg mt-2">
                   WE OFFER MEDICAL HOME CONSULTING SERVICE AND MORE.
                 </p>
+                <Link
+            to="/AdminPage"
+                 >
                 <button className="mt-4 px-8 py-4 font-bold  bg-blue-600 text-white text-md  hover:bg-blue-500">
                   LEARN MORE
                 </button>
+                </Link>
               </div>
             </div>
           </div>
