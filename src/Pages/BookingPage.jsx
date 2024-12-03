@@ -68,6 +68,7 @@ const BookingPage = () => {
   if (questions.length === 0) {
     console.error('No questions found for selected option:', selectedOption);
   }
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -75,16 +76,25 @@ const BookingPage = () => {
     state: "",
     postalCode: "",
     city: "",
-    selectedService:"",
-    selectedOption:"",
+    selectedService:selectedService,
+    selectedOption:selectedOption,
+    selectedDate: selectedDate.toDateString(),
+    selectedTimeSlot:selectedTimeSlot,
     A1: '',
     A2: '',
     A3: '',
     Q1: questions[0],
     Q2: questions[1],
     Q3: questions[2],
-   
   });
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      selectedDate: selectedDate.toDateString(),
+      selectedTimeSlot: selectedTimeSlot,
+    }));
+  }, [selectedDate, selectedTimeSlot]);
+    
   const generateTimeSlots = () => {
     const slots = [];
     const startTime = 18 * 60; // 6:00 PM in minutes
@@ -161,7 +171,7 @@ option: selectedOption,
     from_name: formData.fullName,
     from_email: formData.email,
     booking_date: selectedDate.toDateString(),
-    booking_time: selectedTimeSlot,
+    selectedTimeSlot: selectedTimeSlot,
     Q1: questions[0],
     A1: formData.A1,
     Q2: questions[1],

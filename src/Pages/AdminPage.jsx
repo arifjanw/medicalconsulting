@@ -17,6 +17,7 @@ const AdminPage = () => {
       }
       return allBookings;
     };
+ 
 
     const bookings = getBookings();
     setBookings(bookings);
@@ -41,13 +42,13 @@ const AdminPage = () => {
                 <th className="px-4 py-2 border">Service</th>
                 <th className="px-4 py-2 border">Patient Name</th>
                 <th className="px-4 py-2 border">Date</th>
-                <th className="px-4 py-2 border">Time</th>
+               <th className="px-4 py-2 border">Time</th> 
               </tr>
             </thead>
             <tbody>
               {bookings.map((booking, index) => (
                 <tr key={index}>
-                  <td className="px-4 py-2 border">{booking.Service}</td>
+                  <td className="px-4 py-2 border">{booking.selectedService}:{booking.selectedOption}</td>
                   <td className="px-4 py-2 border">{booking.fullName}</td>
                   <td className="px-4 py-2 border">{booking.selectedDate}</td>
                   <td className="px-4 py-2 border">{booking.selectedTimeSlot}</td>
