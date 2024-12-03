@@ -151,7 +151,7 @@ const BookingPage = () => {
         }
       );
       const uniqueId = uuidv4();
-const adminLink = `${window.location.origin}/view-response/${uniqueId}`;
+const adminLink = `${window.location.origin}/medicalconsultingg/view-response/${uniqueId}`;
 // const bookingData = { ...formData, selectedDate: selectedDate.toDateString(), selectedTimeSlot };
 console.log("Unique ID:", uniqueId);
 console.log("Booking Data:", bookingData);
