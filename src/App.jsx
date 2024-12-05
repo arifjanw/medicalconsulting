@@ -6,6 +6,9 @@ import QuestionnaireViewer from "./Components/QuestionareViewer";
 import BookingPage from './Pages/BookingPage';
 import Form from './Pages/Form'
 import AdminPage from './Pages/AdminPage'
+import PharmacyDashboard from './Pages/PharmacyDashboard'
+import SignupPage from './Pages/SignupPage'
+import PharmacyLandingPage from './Pages/PharmacyLandingPage'
 function App() {
   return (
     <Router basename='/medicalconsultingg'>
@@ -16,6 +19,11 @@ function App() {
         <Route path="/view-response/:id" element={<QuestionnaireViewer />} />
         <Route path="/Form" element={<Form />} />
         <Route path="/AdminPage" element={<AdminPage />} />
+        <Route path="/PharmacyDashboard" element={<PharmacyDashboard />} />
+        <Route path="/SignupPage" element={<SignupPage />} />
+        <Route path="/PharmacyLandingPage" element={<PharmacyLandingPage />} />
+        
+        
         {/* <Route path="/about-us" element={<AboutUs />} /> */}
         {/* <Route path="/contact-us" element={<ContactUs />} /> */}
       </Routes>

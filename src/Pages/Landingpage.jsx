@@ -48,7 +48,7 @@ const LandingPage = () => {
                   WE OFFER MEDICAL HOME CONSULTING SERVICE AND MORE.
                 </p>
                 <Link
-            to="/AdminPage"
+            to="/PharmacyLandingPage"
                  >
                 <button className="mt-4 px-8 py-4 font-bold  bg-blue-600 text-white text-md  hover:bg-blue-500">
                   LEARN MORE
@@ -259,7 +259,7 @@ const LandingPage = () => {
             </div>
             <div className="mt-8 flex justify-center">
             <Link
-            to="/view-response/:id"
+            to="/services"
            
           >
               <button className="bg-blue-600 font-bold  text-white py-3 px-8 text-md hover:bg-blue-500 transition duration-300  rounded-full">

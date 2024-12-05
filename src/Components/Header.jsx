@@ -186,7 +186,6 @@ const Header = ({ handleMouseEnter, handleMouseLeave, isDropdownVisible }) => {
           </li>
         </ul>
 
-        {/* Book Appointment Button */}
         <div className="ml-6">
           <Link
             to="/services"
@@ -195,7 +194,17 @@ const Header = ({ handleMouseEnter, handleMouseLeave, isDropdownVisible }) => {
           >
             Book Appointment
           </Link>
+          <Link
+            to="/SignupPage"
+            className="ml-2 text-white text-sm font-bold px-4 py-3 border border-white transition-all uppercase"
+          
+          >
+           Login
+          </Link>
         </div>
+
+      
+
       </nav>
     </header>
   );

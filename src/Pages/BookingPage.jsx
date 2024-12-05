@@ -125,8 +125,8 @@ const BookingPage = () => {
     //  // Send email to the user
     emailjs
       .send(
-        "service_wq5kphh", // Replace with your EmailJS Service ID
-        "template_krg4vmx", // Replace with your EmailJS Template ID
+        "service_rz4nkfn", // Replace with your EmailJS Service ID
+        "template_diwk1tv", // Replace with your EmailJS Template ID
         {
           fullName: formData.fullName,
           email: formData.email,
@@ -138,7 +138,7 @@ const BookingPage = () => {
           selectedDate: selectedDate.toDateString(),
           selectedTimeSlot,
         },
-        "HUhRLDhznoirJp3je" // Replace with your EmailJS User ID
+        "5AJUoHdUJ45Su4wQI" // Replace with your EmailJS User ID
       )
       .then(
         (result) => {
@@ -161,8 +161,8 @@ localStorage.setItem(uniqueId, JSON.stringify(bookingData));
 //admin
 emailjs
 .send(
-  "service_wq5kphh", // Your EmailJS Service ID
-  "template_pytot8h", // Your EmailJS Template ID
+  "service_rz4nkfn", // Your EmailJS Service ID
+  "template_rh5kyj6", // Your EmailJS Template ID
   {
     ...formData,
        admin_link: adminLink,
@@ -179,7 +179,7 @@ option: selectedOption,
     Q3: questions[2],
     A3: formData.A3,
   },
-  "HUhRLDhznoirJp3je" // Your EmailJS User ID
+  "5AJUoHdUJ45Su4wQI" // Your EmailJS User ID
 )
 .then(
   (result) => {
