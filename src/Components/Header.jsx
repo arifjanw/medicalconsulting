@@ -15,7 +15,7 @@ const Header = ({ handleMouseEnter, handleMouseLeave, isDropdownVisible }) => {
       <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative z-50">
         <div className="flex gap-6">
         <div className="text-2xl font-semibold">
-          <Link to="/" className="text-white">
+          <Link to="/LandingPage" className="text-white">
             UMCG
           </Link>
           </div>

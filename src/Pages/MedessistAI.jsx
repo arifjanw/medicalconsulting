@@ -1,64 +1,45 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import img from '../assets/img.png'
 import Header from "../Components/PharmacyHeader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus, faStore, faUserCheck, faHeartbeat, faPills,faHospital,faArrowRight   } from "@fortawesome/free-solid-svg-icons"
 import { faFacebook, faInstagram, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons"; 
+import img from '../assets/img.png'
+import { faQuestionCircle, faDatabase, faCogs } from "@fortawesome/free-solid-svg-icons";
 
-// import {
-//   faChevronDown,
-//   faPills,
-//   faHeartbeat,
-//   faCapsules,
-//   faSyringe,
-//   faUserCheck,
-//   faFileAlt,
-//   faSmokingBan,
-//   faHeart,
-//   faPhoneAlt,
-// } from "@fortawesome/free-solid-svg-icons";
-
-const PharmacyLandingPage = () => {
+const MedessistAI = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
-  // Handle mouse enter and leave for the "Services" link
   const handleMouseEnter = () => setIsDropdownVisible(true);
   const handleMouseLeave = () => setIsDropdownVisible(false);
 
+ 
+
   return (
-    <div>
-       <Header
+    <div className="bg-gray-50">
+
+      <Header
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
         isDropdownVisible={isDropdownVisible}
       />
-      <main className="relative">
 
-      <section className=""style={{ backgroundColor: "#e8fcf8"}}>
+     <main>
+     <section className=""style={{ backgroundColor: "#e8fcf8"}}>
   <div className="py-16 px-4 md:px-16 lg:px-16 flex flex-col md:flex-row items-center text-center md:text-left gap-8">
     {/* Left Section */}
     <div className=" lg:pr-64">
       <h2 className="text-3xl md:text-5xl font-medium text-dark-turquoise mb-4">
-        Transforming Pharmacy with Technology and AI
+      MedEssist AI: Empowering Pharmacists with a Trusted Clinical Companion
       </h2>
       <p className="text-lg text-gray-600 mb-6">
-        World class clinical solutions, business tools, and a support team to help
-        you craft your dream pharmacy practice.
+      Developed in partnership with<br/>
+An innovative clinical support tool designed by seasoned doctors and pharmacists who comprehend the complexities of your day to day.
       </p>
-      {/* Buttons Section */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center">
-        <button
-          className="border-2 border-yellow-400 text-yellow-500 font-medium bg-white px-8  py-4 rounded-full hover:bg-yellow-50 transition w-auto"
-         
-        >
-          Talk to Pharmacy Advisor
-        </button>
         <button
           className="text-gray-700 px-8 py-4 font-medium rounded-full bg-yellow-400 hover:bg-turquoise transition w-auto"
           
         >
-          Sign up for Free
+         Get started today
         </button>
       </div>
     </div>
@@ -71,154 +52,140 @@ const PharmacyLandingPage = () => {
   </div>
 </section>
 
-<section
-  className="text-gray-700 py-10"
-  style={{ backgroundColor: "#fff8d2" }}
->
-  <div className="container mx-auto px-8 flex flex-col md:flex-row items-center justify-between">
-   
-    <div className="md:w-64% text-center md:text-left mb-4 md:mb-0">
-      <h2 className="text-2xl md:text-3xl font-medium text-baby-pink">
-        Access To Care
-      </h2>
-      <h2 className="text-2xl md:text-2xl font-medium text-baby-pink">
-        A complete solution to transform into a pharmacist-led clinic
-      </h2>
-      <h2 className="text-lg md:text-l text-baby-pink">
-        We've partnered with NPs and MDs to support you in assessing and
-        prescribing for more conditions.
-      </h2>
-    </div>
-
- 
-    <div className="md:w-1/4 text-center md:text-right">
-      <Link to="/services">
-        <button
-          className="bg-baby-pink text-white  font-bold py-3  px-4 rounded-full text-sm transition duration-300 hover:bg-blue-600"
-        >
-          Learn More
-        </button>
-      </Link>
-    </div>
-  </div>
-</section>
 
 
-<section
-  className="py-16 px-8 text-gray-800">
-  <div className="container mx-auto">
-    <h2 className="text-3xl font-bold text-center mb-8"style={{ color: "#f49e1e" }}>
-      Pharmacy Statistics
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {/* Statistic 1 */}
-      <div className=" shadow-md p-6 rounded-lg flex flex-col items-center text-center bg-[#e8fcf8] hover:bg-baby-yellow transform transition hover:scale-105">
-        <FontAwesomeIcon
-          icon={faUserPlus}
-          className="text-5xl  mb-4 group-hover:text-orange-600"style={{ color: "#f49e1e" }}
-        />
-        <h3 className="text-3xl font-extrabold text-gray-800 ">5500+</h3>
-        <p className="text-dark-turquoise mt-2 font-medium">
-          Online Patient Registrations / Year
-        </p>
-        <p className="text-sm mt-2 italic">
-          Our intuitive Smart Form system uses patient-friendly language to
-          maximize completion.
+<section className="py-20 px-6" style={{ backgroundColor: "#f5fafd" }}>
+  <div className="max-w-7xl mx-auto text-center">
+    <h1 className="text-4xl font-extrabold text-[#004d4d]">Here’s What Makes MedEssist AI Different</h1>
+    <p className="text-lg text-gray-600 mt-4 mb-8">
+      MedEssist AI is a tool you can trust! Built by healthcare professionals who believe AI is only valuable if it's accurate.
+    </p>
+    
+    <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3">
+
+      {/* Feature 1: Ask a Question */}
+      <div className="text-center">
+        <FontAwesomeIcon icon={faQuestionCircle} className="text-6xl text-[#00b5b5] mb-4" />
+        <h3 className="text-xl font-semibold text-[#004d4d]">Ask a Question</h3>
+        <p className="text-lg text-gray-700 mt-2">
+          MedEssist AI provides clear, reliable answers tailored to your specific questions.
         </p>
       </div>
 
-      {/* Statistic 2 */}
-      <div className=" shadow-md p-6 rounded-lg flex flex-col items-center text-center bg-[#e8fcf8] hover:bg-baby-yellow transform transition hover:scale-105">
-        <FontAwesomeIcon
-          icon={faStore}
-          className="text-5xl text-turquoise mb-4 group-hover:text-orange-600"
-        />
-        <h3 className="text-3xl font-extrabold text-gray-800">7000+</h3>
-        <p className="text-dark-turquoise mt-2 font-medium">
-          Digital Storefront Visits / Year
+      {/* Feature 2: Evidence-Based Answers */}
+      <div className="text-center">
+        <FontAwesomeIcon icon={faDatabase} className="text-6xl text-[#00b5b5] mb-4" />
+        <h3 className="text-xl font-semibold text-[#004d4d]">Evidence-Based Answers</h3>
+        <p className="text-lg text-gray-700 mt-2">
+          Our AI draws from an ever-growing database of 18,000 curated clinical and pharmacy-specific resources.
         </p>
-        <p className="text-sm mt-2 italic">Ottawa Pharmacy #1</p>
       </div>
 
-      {/* Statistic 3 */}
-      <div className=" shadow-md p-6 rounded-lg flex flex-col items-center text-center bg-[#e8fcf8] hover:bg-baby-yellow transform transition hover:scale-105">
-        <FontAwesomeIcon
-          icon={faUserCheck}
-          className="text-5xl text-baby-pink mb-4 group-hover:text-orange-600"
-        />
-        <h3 className="text-3xl font-extrabold text-gray-800">350+</h3>
-        <p className="text-dark-turquoise mt-2 font-medium">
-          Referral Registrations From MedEssist / Year
+      {/* Feature 3: Integrated Into Pharmacy */}
+      <div className="text-center">
+        <FontAwesomeIcon icon={faCogs} className="text-6xl text-[#00b5b5] mb-4" />
+        <h3 className="text-xl font-semibold text-[#004d4d]">Integrated Into Pharmacy</h3>
+        <p className="text-lg text-gray-700 mt-2">
+          MedEssist AI will be fully integrated into the platform that you use every day, addressing both business and clinical sides of pharmacy.
         </p>
-        <p className="text-sm mt-2 italic">North York Pharmacy</p>
       </div>
 
-      {/* Statistic 4 */}
-      <div className=" shadow-md p-6 rounded-lg flex flex-col items-center text-center bg-[#e8fcf8] hover:bg-baby-yellow transform transition hover:scale-105">
-        <FontAwesomeIcon
-          icon={faHeartbeat}
-          className="text-5xl mb-4 group-hover:text-orange-600"style={{ color: "#f49e1e" }}
-        />
-        <h3 className="text-3xl font-extrabold text-gray-800">700+</h3>
-        <p className="text-dark-turquoise mt-2 font-medium">
-          Registrations from New Patients / Year
-        </p>
-        <p className="text-sm mt-2 italic">Port Elgin Pharmacy</p>
-      </div>
-
-      {/* Statistic 5 */}
-      <div className=" shadow-md p-6 rounded-lg flex flex-col items-center text-center bg-[#e8fcf8] hover:bg-baby-yellow transform transition hover:scale-105">
-        <FontAwesomeIcon
-          icon={faPills}
-          className="text-5xl text-tur mb-4 group-hover:text-orange-600"
-        />
-        <h3 className="text-3xl font-extrabold text-gray-800">5500+</h3>
-        <p className="text-dark-turquoise mt-2 font-medium">
-          Online Patient Registrations / Year
-        </p>
-        <p className="text-sm mt-2 italic">Toronto Pharmacy</p>
-      </div>
     </div>
   </div>
 </section>
 
-<section
-  className="py-16 px-8 flex flex-wrap items-center justify-between"
->
-  <div className="container mx-auto flex flex-wrap items-center py-16 px-16  p-4"style={{ backgroundColor: "#fff8d2" }}>
-    {/* Left Content */}
-    <div className="w-full lg:w-1/2 mb-8 lg:mb-0 px-4">
-      <h2 className="text-4xl font-bold text-gray-800 mb-6">
-        Pharmacies
-      </h2>
-      <p className="text-gray-600 text-lg mb-6">
-        Maximize loyalty and growth by connecting your existing website or
-        using MedEssist as your digital store front.
-      </p>
-      <div className="flex gap-4">
-        <button
-          className="text-black px-6 py-2 rounded-full bg-yellow-400 hover:bg-yellow-600 transition w-auto uppercase"
-        >
-          Learn More
-        </button>
-      </div>
-      <p className="text-gray-600 text-md mb-6 mt-4 flex items-center">
-       or Book a demo
-        <FontAwesomeIcon icon={faArrowRight} className="ml-2 text-gray-600" />
-      </p>
-    </div>
 
-    {/* Right Content */}
-    <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end px-4 mb-6 lg:mb-0 pr-32">
-      <FontAwesomeIcon
-        icon={faHospital}
-        className="text-[150px] text-gray-800 mb-6 transform lg:translate-x-12"
-      />
+<section className="py-20 px-6" style={{ backgroundColor: "#f5fafd" }}>
+  <div className="max-w-7xl mx-auto text-center">
+    <h1 className="text-4xl font-extrabold text-[#004d4d]">Try MedEssist AI Today!</h1>
+    <p className="text-lg text-gray-600 mt-4 mb-8">
+      Join our invite-only beta program. Fill out the form below to get started.
+    </p>
+    
+    <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <form action="#" method="POST">
+        {/* First Name */}
+        <div className="mb-4">
+          <label htmlFor="firstName" className="block text-lg font-medium text-gray-700">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+            className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00b5b5] focus:border-[#00b5b5]"
+          />
+        </div>
+
+        {/* Last Name */}
+        <div className="mb-4">
+          <label htmlFor="lastName" className="block text-lg font-medium text-gray-700">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00b5b5] focus:border-[#00b5b5]"
+          />
+        </div>
+
+        {/* Profession */}
+        <div className="mb-4">
+          <label htmlFor="profession" className="block text-lg font-medium text-gray-700">Profession</label>
+          <input
+            type="text"
+            id="profession"
+            name="profession"
+            required
+            className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00b5b5] focus:border-[#00b5b5]"
+          />
+        </div>
+
+        {/* Pharmacy Subscription Question */}
+        <div className="mb-4">
+          <label htmlFor="isSubscribed" className="block text-lg font-medium text-gray-700">Is your work site currently subscribed to MedEssist?</label>
+          <select
+            id="isSubscribed"
+            name="isSubscribed"
+            className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00b5b5] focus:border-[#00b5b5]"
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        {/* Pharmacy Name (only visible if 'Yes' is selected) */}
+        <div className="mb-4">
+          <label htmlFor="pharmacyName" className="block text-lg font-medium text-gray-700">If yes, please provide pharmacy name</label>
+          <input
+            type="text"
+            id="pharmacyName"
+            name="pharmacyName"
+            className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00b5b5] focus:border-[#00b5b5]"
+          />
+        </div>
+
+        {/* Consent Message */}
+        <div className="mb-6 text-left">
+          <p className="text-sm text-gray-600">
+            MedEssist needs the contact information you provide to us to contact you about our products and services. You may unsubscribe from these communications at any time. For information on how to unsubscribe, as well as our privacy practices and commitment to protecting your privacy, check out our <a href="/privacy-policy" className="text-[#00b5b5]">Privacy Policy</a>.
+          </p>
+        </div>
+
+        {/* Submit Button */}
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="bg-[#00b5b5] text-white text-lg font-semibold py-3 px-6 rounded-lg hover:bg-[#009e9e] focus:outline-none focus:ring-2 focus:ring-[#00b5b5] focus:ring-opacity-50"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
 
-<section class="bg-yellow-400 py-12 px-6 pb-16 text-center">
+    <section class="bg-yellow-400 py-12 px-6 pb-16 text-center">
   <h2 class="text-3xl font-bold text-gray-800 mb-4">
     Ready to simplify your practice and meet new patients?
   </h2>
@@ -305,11 +272,8 @@ const PharmacyLandingPage = () => {
     </div>
   </div>
 </section>
-
 </main>
-
-
-    <footer className="bg-teal-500 text-white py-12">
+<footer className="bg-teal-500 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row justify-between gap-8">
         {/* Left Section */}
         <div className="flex-1">
@@ -438,15 +402,10 @@ const PharmacyLandingPage = () => {
         </div>
       </div>
     </footer>
-
-
-
-
-
-
-
+     
+   
     </div>
   );
 };
 
-export default PharmacyLandingPage;
+export default MedessistAI;

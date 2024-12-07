@@ -16,7 +16,9 @@ const BookingPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
-
+  const [ironStatus, setIronStatus] = useState(""); 
+  
+  
 
   const questionnaires = {
     "Morning Sickness": [
@@ -25,9 +27,9 @@ const BookingPage = () => {
     "Are you open to one-on-one counseling or group therapy?",
   ],
   "Heartburn": [
+    "Are you currently taking any medication for heartburn?",
     "What foods or drinks trigger your heartburn symptoms?",
     "How often do you experience heartburn?",
-    "Are you currently taking any medication for heartburn?",
   ],
   "Allergy": [
     "What specific allergy symptoms are you experiencing?",
@@ -76,6 +78,11 @@ const BookingPage = () => {
     state: "",
     postalCode: "",
     city: "",
+    radioans:"",
+    gender:"",
+    iron:"",
+    supplementInput:"",
+    additionalInfo:"",
     selectedService:selectedService,
     selectedOption:selectedOption,
     selectedDate: selectedDate.toDateString(),
@@ -193,9 +200,11 @@ option: selectedOption,
   };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    setIronStatus(value); 
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
+      
     }));
   };
   return (
@@ -314,9 +323,91 @@ option: selectedOption,
           onChange={handleInputChange}
           required
         />
-        
+          <div className="mb-4">
+  <label className="block font-semibold mb-2">What gender were you assigned at birth?</label>
+  <div className="flex space-x-4 mb-2">
+    <label className="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="gender"
+        value="female"
+        onChange={handleInputChange}
+        className="form-radio text-blue-500"
+      />
+      <span>Female</span>
+    </label>
+    <label className="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="gender"
+        value="male"
+        onChange={handleInputChange}
+        className="form-radio text-blue-500"
+      />
+      <span>Male</span>
+    </label>
+  </div>
+  {/* If additional questions need an input based on gender selection */}
+  {formData.gender && (
+    <div className="mt-4">
+      <input
+        type="text"
+        name="additionalInfo"
+        placeholder="Please provide additional info (optional)"
+        className="w-full p-2 border rounded"
+        onChange={handleInputChange}
+      />
+    </div>
+  )}
+</div>
+
+          
+<div className="mb-4">
+  <label className="block font-semibold mb-2">Are you currently taking iron-containing vitamins or prenatal supplements?</label>
+  <div className="flex space-x-4 mb-2">
+    <label className="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="iron"
+        value="yes"
+        onChange={handleInputChange}
+        className="form-radio text-blue-500"
+      />
+      <span>Yes</span>
+    </label>
+    <label className="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="iron"
+        value="no"
+        onChange={handleInputChange}
+        className="form-radio text-blue-500"
+      />
+      <span>No</span>
+    </label>
+  </div>
+
+  {/* Conditionally render input field if 'Yes' is selected */}
+  {ironStatus === "yes" && (
+    <div className="mt-4">
+      <label className="block font-semibold mb-2">
+        Please specify the supplements you're taking:
+      </label>
+      <input
+        type="text"
+        name="supplementInput"
+        className="w-full p-2 border rounded"
+        onChange={handleInputChange}
+        value={formData.supplementInput || ""} 
+        placeholder="Enter supplements here"
+      />
+    </div>
+  )}
+</div>
+
+
        
-{questions.map((question, index) => (
+        {questions.map((question, index) => (
   <div key={index} className="mb-4">
     <label className="block font-semibold mb-2">{question}</label>
     {question === "Do certain smells or foods trigger your symptoms?" ? (
@@ -333,7 +424,6 @@ option: selectedOption,
                 setFormData((prevData) => ({
                   ...prevData,
                   [`A${index + 1}`]: e.target.value,
-                  [`triggerInput${index + 1}`]: "", // Reset the text field value
                 }))
               }
               checked={formData[`A${index + 1}`] === "yes"}
@@ -350,7 +440,7 @@ option: selectedOption,
                 setFormData((prevData) => ({
                   ...prevData,
                   [`A${index + 1}`]: e.target.value,
-                  [`triggerInput${index + 1}`]: "", // Ensure input is cleared on "No"
+                  [`triggerInput${index + 1}`]: "", // Reset input on "No"
                 }))
               }
               checked={formData[`A${index + 1}`] === "no"}
@@ -358,20 +448,17 @@ option: selectedOption,
             <span>No</span>
           </label>
         </div>
+
         {/* Conditional Input Field */}
         {formData[`A${index + 1}`] === "yes" && (
           <input
             type="text"
-            name={`triggerInput${index + 1}`}
-            className="w-full p-2 border rounded-lg"
-            placeholder="Please describe"
-            value={formData[`triggerInput${index + 1}`] || ""}
-            onChange={(e) =>
-              setFormData((prevData) => ({
-                ...prevData,
-                [`triggerInput${index + 1}`]: e.target.value,
-              }))
-            }
+            name="radioans"
+          placeholder="Full Name"
+          className="w-full mb-4 p-2 border rounded"
+          onChange={handleInputChange}
+          required
+          
           />
         )}
       </div>
@@ -393,6 +480,8 @@ option: selectedOption,
     )}
   </div>
 ))}
+
+
 
         <button
           type="submit"
