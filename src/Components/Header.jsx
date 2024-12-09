@@ -15,7 +15,7 @@ const Header = ({ handleMouseEnter, handleMouseLeave, isDropdownVisible }) => {
       <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative z-50">
         <div className="flex gap-6">
         <div className="text-2xl font-semibold">
-          <Link to="/LandingPage" className="text-white">
+          <Link to="/" className="text-white">
             UMCG
           </Link>
           </div>
@@ -35,10 +35,10 @@ const Header = ({ handleMouseEnter, handleMouseLeave, isDropdownVisible }) => {
 
         {/* Main Navigation */}
         <ul
-          className={`lg:flex space-x-6 ${isMenuOpen ? "flex flex-col  absolute top-16 left-0 w-48 bg-[#237fb7] py-4" : "hidden"}`}
+          className={`lg:flex space-x-6 items-center ${isMenuOpen ? "flex flex-col  absolute top-16 left-0 w-48 bg-[#237fb7] py-4" : "hidden"}`}
           style={{ zIndex: 999 }}
         >
-          <li className="py-2 pl-6">
+          <li className="py-2 ">
             <Link to="/" className="text-white font-bold hover:text-gray-300">
               Home
             </Link>
@@ -184,9 +184,26 @@ const Header = ({ handleMouseEnter, handleMouseLeave, isDropdownVisible }) => {
               Contact Us
             </Link>
           </li>
+          {/* Buttons for Mobile View */}
+          {isMenuOpen && (
+            <div className="flex flex-col items-start mt-4 space-y-3 lg:hidden px-6">
+              <Link
+                to="/services"
+                className="text-sm text-white font-bold px-2 py-2 bg-[#f49e1e] rounded-md text-center "
+              >
+                Book Appointment
+              </Link>
+              <Link
+                to="/SignupPage"
+                className="text-sm text-white font-bold px-4 py-2 border border-white rounded-md text-center uppercase"
+              >
+                Login
+              </Link>
+            </div>
+          )}
         </ul>
 
-        <div className="ml-6">
+        <div className="hidden lg:flex space-x-4">
           <Link
             to="/services"
             className="text-white text-sm font-bold px-4 py-3 border border-white transition-all uppercase"
@@ -197,9 +214,8 @@ const Header = ({ handleMouseEnter, handleMouseLeave, isDropdownVisible }) => {
           <Link
             to="/SignupPage"
             className="ml-2 text-white text-sm font-bold px-4 py-3 border border-white transition-all uppercase"
-          
           >
-           Login
+            Login
           </Link>
         </div>
 

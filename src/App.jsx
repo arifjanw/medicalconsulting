@@ -14,6 +14,7 @@ import AboutUs from './Pages/AboutUs'
 import Pricing from './Pages/Pricing'
 import MedessistAI from './Pages/MedessistAI'
 import ForPharmacies from './Pages/ForPharmacies'
+import Testimonials from './Pages/Testimonials'
 
 
 
@@ -21,7 +22,7 @@ function App() {
   return (
     <Router basename='/medicalconsultingg'>
       <Routes>
-        <Route path="/LandingPage" element={<LandingPage />} /> 
+        <Route path="/" element={<LandingPage />} /> 
         <Route path="/services" element={<ServicePage />} />
         <Route path="/bookingpage" element={<BookingPage />} />
         <Route path="/view-response/:id" element={<QuestionnaireViewer />} />
@@ -29,13 +30,15 @@ function App() {
         <Route path="/AdminPage" element={<AdminPage />} />
         <Route path="/PharmacyDashboard" element={<PharmacyDashboard />} />
         <Route path="/SignupPage" element={<SignupPage />} />
-        <Route path="/" element={<PharmacyLandingPage />} />
+        <Route path="/PharmacyLandingPage" element={<PharmacyLandingPage />} />
         <Route path="/BlogPage" element={<BlogPage />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/MedessistAI" element={<MedessistAI />} />
         <Route path="/ForPharmacies" element={<ForPharmacies/>} />
+        <Route path="/Testimonials" element={<Testimonials/>} />
       
+        
        
       </Routes>
     </Router>
